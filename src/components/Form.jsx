@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Form() {
+function Form({ handleNewItem }) {
   const [val, setVal] = useState("");
   const handleChange = (e) => {
     setVal(e.target.value);
@@ -11,6 +11,7 @@ function Form() {
     if (val == "") {
       return;
     }
+    handleNewItem(val);
   };
   return (
     <form

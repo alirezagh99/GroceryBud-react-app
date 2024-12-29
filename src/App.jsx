@@ -23,9 +23,15 @@ const data = [
 function App() {
   const [items, setItems] = useState(data);
 
+  const handleNewItem = (i) => {
+    console.log(i);
+    const newList = [...items, { name: i, id: uuidv4() }];
+    setItems(newList);
+  };
+
   return (
     <div className="w-1/3 m-auto shadow-lg rounded p-5 mt-20">
-      <Form />
+      <Form handleNewItem={handleNewItem} />
       <Items items={items} />
     </div>
   );
