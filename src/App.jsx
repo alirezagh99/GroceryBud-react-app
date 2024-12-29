@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import { v4 as uuidv4 } from "uuid";
 import Items from "./components/Items";
+import { ToastContainer, toast } from "react-toastify";
 const data = [
   {
     id: uuidv4(),
@@ -27,6 +28,7 @@ function App() {
     console.log(i);
     const newList = [...items, { name: i, id: uuidv4() }];
     setItems(newList);
+    toast.success("New item added to the list.");
   };
 
   const handleDelete = (id) => {
@@ -40,6 +42,7 @@ function App() {
     <div className="w-1/3 m-auto shadow-lg rounded p-5 mt-20">
       <Form handleNewItem={handleNewItem} />
       <Items items={items} handleDelete={handleDelete} />
+      <ToastContainer position="top-center" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function Form({ handleNewItem }) {
   const [val, setVal] = useState("");
@@ -9,6 +10,7 @@ function Form({ handleNewItem }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (val == "") {
+      toast.error("Input cannot be empty.");
       return;
     }
     handleNewItem(val);
