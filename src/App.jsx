@@ -21,13 +21,19 @@ const data = [
     name: "Bread",
   },
 ];
+
+const setLocalStorage = (items) => {
+  localStorage.setItem("list", JSON.stringify(items));
+};
+const getLocalStorage = JSON.parse(localStorage.getItem("list") || "[]");
+
 function App() {
-  const [items, setItems] = useState(data);
+  const [items, setItems] = useState(getLocalStorage);
 
   const handleNewItem = (i) => {
-    console.log(i);
     const newList = [...items, { name: i, id: uuidv4() }];
     setItems(newList);
+    setLocalStorage(newList);
     toast.success("New item added to the list.");
   };
 
@@ -36,6 +42,7 @@ function App() {
       return item.id !== id;
     });
     setItems(newList);
+    setLocalStorage(newList);
   };
 
   return (
