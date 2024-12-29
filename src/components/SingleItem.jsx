@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function SingleItem({ item }) {
+function SingleItem({ item, handleDelete }) {
   const [checked, setChecked] = useState(false);
   const lineThrough = checked ? "line-through" : "";
 
@@ -15,7 +15,10 @@ function SingleItem({ item }) {
         <input type="checkbox" checked={checked} onChange={handleChange} />
         <h5 className={`ml-3 font-medium ${lineThrough}`}>{item.name}</h5>
       </div>
-      <button className="bg-gray-900 px-1 hover:bg-blue-400 transition-all duration-300 text-white rounded">
+      <button
+        onClick={() => handleDelete(item.id)}
+        className="bg-gray-900 px-1 hover:bg-blue-400 transition-all duration-300 text-white rounded"
+      >
         Delete
       </button>
     </div>

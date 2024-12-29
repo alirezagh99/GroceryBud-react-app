@@ -29,10 +29,17 @@ function App() {
     setItems(newList);
   };
 
+  const handleDelete = (id) => {
+    const newList = items.filter((item) => {
+      return item.id !== id;
+    });
+    setItems(newList);
+  };
+
   return (
     <div className="w-1/3 m-auto shadow-lg rounded p-5 mt-20">
       <Form handleNewItem={handleNewItem} />
-      <Items items={items} />
+      <Items items={items} handleDelete={handleDelete} />
     </div>
   );
 }

@@ -12,6 +12,7 @@ function Form({ handleNewItem }) {
       return;
     }
     handleNewItem(val);
+    setVal("");
   };
   return (
     <form
@@ -24,6 +25,7 @@ function Form({ handleNewItem }) {
           onChange={handleChange}
           className="border text-sm w-[80%] -mr-2 h-7 pl-3 outline-0"
           type="text"
+          value={val}
         />
         <button className="bg-blue-400 hover:bg-blue-800 transition-all duration-500 text-white text-sm py-1 px-4">
           Add item
